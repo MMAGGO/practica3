@@ -1,0 +1,75 @@
+using System;
+using System.Collections;
+
+
+namespace tarrea_3
+{
+
+
+	class Mitarea
+	{
+
+		public string codigo;
+		public string nombre;
+	    public string direccion;
+	    public string facebook;
+		public string telefono;
+
+		public static void Main (string[] args)
+		{
+			Hashtable mi_tabla = new Hashtable ();
+			Mitarea persona = new Mitarea ();
+
+			for (int contador=0; contador<4; contador++) {
+
+				Console.WriteLine ("CAPTURA LOS DATOS DE LA PERSONA");
+				Console.WriteLine ("Dame el código");
+				persona.codigo = Console.ReadLine ();
+				Console.WriteLine ("Dame el nombre");
+				persona.nombre = Console.ReadLine ();
+				Console.WriteLine ("Dame la dirección");
+				persona.direccion = Console.ReadLine ();
+				Console.WriteLine ("Dame el teléfono");
+				persona.telefono = Console.ReadLine ();
+				Console.WriteLine ("Dame el facebook");
+				persona.facebook = Console.ReadLine ();
+
+				mi_tabla.Add (persona.codigo, persona);
+				Console.Clear();
+			}
+			for (int contador2=0; contador2<2; contador2++) {
+				Console.WriteLine ("Dame el código para editar");
+				string codigo = Console.ReadLine ();
+				if (mi_tabla.ContainsKey (codigo)) {
+
+					mi_tabla.Remove(codigo);
+					persona.codigo=codigo;
+					Console.WriteLine ("Dame el nombre");
+					persona.nombre = Console.ReadLine ();
+					Console.WriteLine ("Dame la dirección");
+					persona.direccion = Console.ReadLine ();
+					Console.WriteLine ("Dame el teléfono");
+					persona.telefono = Console.ReadLine ();
+					Console.WriteLine ("Dame el facebook");
+					persona.facebook = Console.ReadLine ();
+
+					mi_tabla.Add (codigo, persona);
+					Console.Clear ();
+				} else {
+					Console.WriteLine ("ERROR");
+				}
+				}
+			for(int contador=0;contador<2;contador++){
+			Console.WriteLine("Dame el código para eliminar");
+			string codigo = Console.ReadLine();
+			if (mi_tabla.ContainsKey (codigo)) {
+				Console.WriteLine("¿Esta seguro que desea eliminar?");
+				Console.WriteLine("0 = No, 1 = Si");
+				string opcion = Console.ReadLine();
+				if(opcion != "0"){mi_tabla.Remove(codigo);}
+			}else {
+				Console.WriteLine ("ERROR");}
+    	 }
+	   	}
+	   }
+}
